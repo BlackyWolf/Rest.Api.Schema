@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Rest.Api.Schema.Conventions;
+using Rest.Api.Schema.Documents;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Rest.Api.Schema.Extensions
         {
             services.Configure<MvcOptions>(
                 options => options.Conventions.Add(new RestfulSchemaConvention()));
+
+            services.AddTransient<IDocument, Document>();
 
             return services;
         }
